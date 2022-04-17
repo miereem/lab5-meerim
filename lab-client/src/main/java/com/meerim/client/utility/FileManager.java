@@ -10,11 +10,15 @@ import java.util.Scanner;
 public class FileManager {
     private final String filename;
 
-    public FileManager(String var) {
+    public FileManager(String var) throws NullPointerException {
         this.filename = System.getenv(var);
-        if (!filename.endsWith(".csv")) {
-            System.out.println("This program can only work with .csv file.");
-            return;
+        try {
+            if (!filename.endsWith(".csv")) {
+                System.out.println("This program can only work with .csv file.");
+                return;
+            }
+        } catch (NullPointerException e) {
+            System.out.println("The environment variable is invalid");
         }
     }
 
