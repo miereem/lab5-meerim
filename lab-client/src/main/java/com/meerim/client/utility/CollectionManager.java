@@ -37,7 +37,7 @@ public class CollectionManager {
         Dragon minIdDragon = null;
         int minId = Integer.MAX_VALUE;
         for (Dragon dragon : mainData) {
-            if (dragon.getId() > minId) {
+            if (dragon.getId() < minId) {
                 minId = dragon.getId();
                 minIdDragon = dragon;
             }
