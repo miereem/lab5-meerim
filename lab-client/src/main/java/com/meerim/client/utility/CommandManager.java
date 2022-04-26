@@ -28,7 +28,7 @@ public class CommandManager {
     private final HashSet<Command> commands = new HashSet<>();
 
     public CommandManager(FileManager fileManager, UserInputManager userInputManager,
-                          CollectionManager collectionManager, OutputManager outputManager) {
+                          CollectionManager collectionManager, OutputManager outputManager, CollectionInfo collectionInfo) {
         commands.add(new HelpCommand());
         commands.add(new AddCommand(collectionManager, userInputManager, outputManager));
         commands.add(new SaveCommand(fileManager, collectionManager));
@@ -43,7 +43,7 @@ public class CommandManager {
         commands.add(new MinByCaveCommand(collectionManager));
         commands.add(new AverageOfAgeCommand(collectionManager));
         commands.add(new PrintAscendingCommand(collectionManager));
-        commands.add(new InfoCommand(collectionManager));
+        commands.add(new InfoCommand(collectionManager, collectionInfo));
         commands.add(new ExitCommand());
     }
 

@@ -99,13 +99,6 @@ public class Dragon implements Comparable<Dragon> {
     public int compareTo(Dragon o) {
         Integer oValue = o.getAge();
         Integer thisValue = this.getAge();
-        // null handling
-        if (oValue == null) {
-            oValue = -1;
-        }
-        if (thisValue == null) {
-            thisValue = -1;
-        }
         if (oValue - thisValue != 0) {
             return thisValue - oValue;
         } else {

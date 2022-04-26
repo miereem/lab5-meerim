@@ -31,7 +31,7 @@ public class Console {
     public void start() throws IllegalArgumentException, IOException {
         String stringData = fileManager.read();
         CSVParser parser = new CSVParser();
-        LinkedHashSet<Dragon> dragons = parser.deserialize(stringData, Dragon.class);
+        LinkedHashSet<Dragon> dragons = parser.deserialize(stringData);
         collectionManager.initialiseData(dragons);
 
         startCommandCycle();

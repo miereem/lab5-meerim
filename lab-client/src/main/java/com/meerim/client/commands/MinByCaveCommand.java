@@ -16,16 +16,7 @@ public class MinByCaveCommand extends Command {
 
     @Override
     public CommandResult execute(String arg) {
-        float minCave = Integer.MAX_VALUE;
-        Dragon minCaveDragon = null;
-
-        for (Dragon dragon : collectionManager.getMainData()) {
-            if (minCave > dragon.getCave()) {
-                minCave = dragon.getCave();
-                minCaveDragon = dragon;
-            }
-        }
-
+        Dragon minCaveDragon = collectionManager.getMinCave();
         assert minCaveDragon != null;
         return new CommandResult(false, minCaveDragon.toString());
     }

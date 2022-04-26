@@ -49,8 +49,31 @@ public class DragonMaker {
 
         Coordinates coordinates = askForCoordinates(); //not null
         DragonCave cave = askForDragonCave(); //not null
-
         return new Dragon(name, coordinates, age, color, type, character, cave, collectionManager);
+    }
+    private Dragon askForDragon(int intArg) {
+        outputManager.println("Enter Dragon data");
+        String name = asker.ask(arg -> (arg).length() > 0, "Enter name (String)",
+                ERROR_MESSAGE, "The string must not be empty", x -> x, false);
+
+        Integer age = asker.ask(arg -> (arg) > 0, "Enter Dragon's age (int) (has to be larger than 0, can't be null)",
+                ERROR_MESSAGE, "Your int must be >0. Try again", Integer::parseInt, false); // >0, null-able
+
+        Color color = asker.ask(arg -> true, "Enter Dragon's color (BLACK, BLUE, YELLOW, WHITE)(can be null)",
+                ERROR_MESSAGE, ERROR_MESSAGE, Color::valueOf, true); //not null
+
+        DragonType type = asker.ask(arg -> true, "Enter Dragon Type (WATER, AIR, FIRE) (can be null)",
+                ERROR_MESSAGE, ERROR_MESSAGE, DragonType::valueOf, true); // null-able
+
+        DragonCharacter character = asker.ask(arg -> true, "Enter Dragon character (CUNNING, GOOD, EVIL, CHAOTIC_EVIL) (can be null)",
+                ERROR_MESSAGE, ERROR_MESSAGE, DragonCharacter::valueOf, true); // null-able
+
+
+        Coordinates coordinates = askForCoordinates(); //not null
+        DragonCave cave = askForDragonCave(); //not null
+        Dragon dragon = new Dragon(name, coordinates, age, color, type, character, cave, collectionManager);
+        dragon.setId(intArg);
+        return dragon;
     }
 
     private Coordinates askForCoordinates() {

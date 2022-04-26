@@ -26,6 +26,7 @@ public class UserInputManager {
                     currentFilesReaders.pop().close();
                     return nextLine();
                 } else {
+                    currentFilesReaders.pop().close();
                     return input;
                 }
 
@@ -34,6 +35,7 @@ public class UserInputManager {
                 // never throws exception
                 e.printStackTrace();
             }
+
 
         } else {
             return scanner.nextLine();

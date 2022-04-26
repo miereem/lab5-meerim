@@ -1,6 +1,6 @@
 package com.meerim.client.commands;
 
-import com.meerim.client.data.Dragon;
+
 import com.meerim.client.utility.CollectionManager;
 
 
@@ -15,13 +15,9 @@ public class AverageOfAgeCommand extends Command {
 
     @Override
     public CommandResult execute(String arg) {
-        int avAge = 0;
-
-        for (Dragon dragon : collectionManager.getMainData()) {
-            avAge = avAge + dragon.getAge();
+        if (collectionManager.getMainData().isEmpty()) {
+            return new CommandResult(false, "The method wasn't executed due to empty collection.");
         }
-        avAge = avAge / collectionManager.getMainData().size();
-        assert avAge != 0;
-        return new CommandResult(false, String.valueOf(avAge));
+        return new CommandResult(false, String.valueOf(collectionManager.getAverage()));
     }
 }

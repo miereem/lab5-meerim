@@ -6,7 +6,7 @@ import com.meerim.client.utility.CollectionManager;
 import com.meerim.client.utility.DragonMaker;
 import com.meerim.client.utility.UserInputManager;
 
-import java.util.Collections;
+
 
 
 public class AddIfMinCommand extends Command {
@@ -25,8 +25,7 @@ public class AddIfMinCommand extends Command {
     public CommandResult execute(String arg) {
         Dragon dragon = new DragonMaker(userInputManager, outputManager, collectionManager).makeDragon();
 
-        if (collectionManager.getMainData().isEmpty() || dragon.compareTo(Collections.min(collectionManager.getMainData())) < 0) {
-            collectionManager.getMainData().add(dragon);
+        if (collectionManager.addIfMin(dragon)) {
             return new CommandResult(false, "The element was added successfully");
         } else {
             return new CommandResult(false, "The element was not min, so it was not added");

@@ -2,16 +2,11 @@ package com.meerim.client.data;
 
 import java.util.Objects;
 
-public class DragonCave implements Comparable<DragonCave> {
+public class DragonCave {
     private float numberOfTreasures; //Значение поля должно быть больше 0
 
     public DragonCave(float numberOfTreasures) {
         this.numberOfTreasures = numberOfTreasures;
-    }
-
-    @Override
-    public int compareTo(DragonCave o) {
-        return 0;
     }
 
     public float getNumberOfTreasures() {
