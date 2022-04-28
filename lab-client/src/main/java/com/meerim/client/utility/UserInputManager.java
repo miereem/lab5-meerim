@@ -26,21 +26,21 @@ public class UserInputManager {
                     currentFilesReaders.pop().close();
                     return nextLine();
                 } else {
-                    currentFilesReaders.pop().close();
                     return input;
                 }
-
-
             } catch (IOException e) {
                 // never throws exception
                 e.printStackTrace();
+            } finally {
+                try {
+                    currentFilesReaders.pop().close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
-
         } else {
             return scanner.nextLine();
         }
-
         // never returns ""
         return "";
     }

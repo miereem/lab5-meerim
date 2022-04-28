@@ -8,7 +8,7 @@ import com.meerim.client.data.Dragon;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.LinkedHashSet;
-
+import java.util.List;
 public class Console {
     private final CommandRunManager commandRunManager;
 
@@ -30,9 +30,10 @@ public class Console {
 
     public void start() throws IllegalArgumentException, IOException {
         String stringData = fileManager.read();
-        CSVParser parser = new CSVParser();
-        LinkedHashSet<Dragon> dragons = parser.deserialize(stringData);
-        collectionManager.initialiseData(dragons);
+        CSVMapper parser = new CSVMapper();
+        List<Dragon> dragons = parser.deserialize(fileManager.getFilename());
+        LinkedHashSet<Dragon> dragons1 = new LinkedHashSet<Dragon>(dragons);
+        collectionManager.initialiseData(dragons1);
 
         startCommandCycle();
     }

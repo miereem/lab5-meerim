@@ -1,9 +1,8 @@
 package com.meerim.client.commands;
 
-import com.meerim.client.utility.CSVParser;
+import com.meerim.client.utility.CSVMapper;
 import com.meerim.client.utility.CollectionManager;
 import com.meerim.client.utility.FileManager;
-import java.io.IOException;
 
 public class SaveCommand extends Command {
     private final FileManager fileManager;
@@ -17,11 +16,7 @@ public class SaveCommand extends Command {
 
     @Override
     public CommandResult execute(String arg) {
-        try {
-            fileManager.save(new CSVParser().serialize(collectionManager.getMainData()));
-        } catch (IOException e) {
-            return new CommandResult(false, "There was a problem saving a file. Please restart the program with another one");
-        }
+        new CSVMapper().serialize(fileManager.getFilename(), collectionManager.getDataForSerialization());
         return new CommandResult(false, "The data was saved successfully");
     }
 }

@@ -42,8 +42,8 @@ public final class Client {
             outputManager.println("The file does not keep data in correct format.");
         } catch (IOException e) {
             outputManager.println("Could not read the file. Check if it is available.");
-        } catch (Exception e) {
-            outputManager.println("Could not execute the program");
-        }
+        } //catch (Exception e) {
+            //outputManager.println("Could not execute the program");
+        //}
     }
 }

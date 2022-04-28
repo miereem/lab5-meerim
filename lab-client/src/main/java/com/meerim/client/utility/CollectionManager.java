@@ -1,24 +1,21 @@
 package com.meerim.client.utility;
 
 import com.meerim.client.data.Dragon;
+import com.meerim.client.data.DragonCave;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 public class CollectionManager {
     private LinkedHashSet<Dragon> mainData = new LinkedHashSet<>();
     private final LocalDate creationDate = LocalDate.now();
 
-        public int getMaxId() {
-            int maxId = 0;
-            for (Dragon dragon : mainData) {
-                if (dragon.getId() > maxId) {
-                    maxId = dragon.getId();
-                }
-            }
-            return maxId;
+        public int getNextId() {
+            return mainData.size() + 1;
         }
 
     public void initialiseData(LinkedHashSet<Dragon> linkedHashSet) {
@@ -32,6 +29,10 @@ public class CollectionManager {
 
     public LinkedHashSet<Dragon> getMainData() {
         return mainData;
+    }
+    public List<Dragon> getDataForSerialization() {
+        List<Dragon> list = new ArrayList<Dragon>(mainData);
+        return list;
     }
     public Dragon getMinId() {
         Dragon minIdDragon = null;
@@ -57,8 +58,8 @@ public class CollectionManager {
         }
         return true;
     }
-    public Integer getAverage() {
-        int avAge = 0;
+    public double getAverage() {
+        double avAge = 0;
         for (Dragon dragon : mainData) {
             avAge = avAge + dragon.getAge();
         }
@@ -66,10 +67,10 @@ public class CollectionManager {
         return avAge;
     }
     public Dragon getMinCave() {
-        float minCave = Integer.MAX_VALUE;
+        DragonCave minCave = new DragonCave(Integer.MAX_VALUE);
         Dragon minCaveDragon = null;
         for (Dragon dragon : mainData) {
-            if (minCave > dragon.getCave()) {
+            if (minCave.compareTo(dragon.getCave()) > 0) {
                 minCave = dragon.getCave();
                 minCaveDragon = dragon;
             }

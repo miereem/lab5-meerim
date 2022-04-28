@@ -7,29 +7,32 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvDate;
+import com.opencsv.bean.CsvRecurse;
+
 public class Dragon implements Comparable<Dragon> {
 
-    private final String name; //not null, not empty
-    private final Coordinates coordinates; //not null
-    private final java.time.LocalDate creationDate; //not null, automatic generation
-    private final Integer age; // >0, not null
+    @CsvBindByName
+    private String name; //not null, not empty
+    @CsvRecurse
+    private Coordinates coordinates; //not null
+    @CsvBindByName
+    private Integer age; // >0, not null
+    @CsvBindByName
     private Color color; //null-able
+    @CsvBindByName
     private DragonType type; //null-able
+    @CsvBindByName
     private DragonCharacter character; // null-able
-    private final DragonCave cave; //null-able
+    @CsvRecurse
+    private DragonCave cave; //null-able
+    @CsvBindByName
+    @CsvDate("yyyy-MM-dd")
+    private LocalDate creationDate; //not null, automatic generation
+    @CsvBindByName
     private int id; // >0, unique, automatic generation
 
-    public Dragon(String token, Coordinates coordinates, Integer integer, Color color, DragonType dragonType, DragonCharacter dragonCharacter, DragonCave dragonCave, LocalDate parse, Integer valueOf)  {
-        this.name = token;
-        this.coordinates = coordinates;
-        this.age = integer;
-        this.color = color;
-        this.type = dragonType;
-        this.character = dragonCharacter;
-        this.cave = dragonCave;
-        this.creationDate = parse;
-        this.id = valueOf;
-    }
 
     public Dragon(String name,
                   Coordinates coordinates,
@@ -46,8 +49,23 @@ public class Dragon implements Comparable<Dragon> {
         this.type = type;
         this.character = character;
         this.cave = cave;
-        this.creationDate = java.time.LocalDate.now();
-        this.id = collectionManager.getMaxId() + 1;
+        this.creationDate = LocalDate.now();
+        this.id = collectionManager.getNextId();
+    }
+
+    public Dragon() {
+    }
+
+    public Dragon(String name, Coordinates coordinates, Integer age, Color color, DragonType type, DragonCharacter character, DragonCave cave, LocalDate creationDate, int id) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.age = age;
+        this.color = color;
+        this.type = type;
+        this.character = character;
+        this.cave = cave;
+        this.creationDate = creationDate;
+        this.id = id;
     }
 
     @Override
@@ -72,8 +90,8 @@ public class Dragon implements Comparable<Dragon> {
         return age;
     }
 
-    public Float getCave() {
-        return cave.getNumberOfTreasures();
+    public DragonCave getCave() {
+        return cave;
     }
 
     @Override
@@ -91,8 +109,9 @@ public class Dragon implements Comparable<Dragon> {
                 + '}';
     }
 
-    public String getData() {
-        return name + "," + coordinates.getData() + "," + age + "," + color + "," + type + "," + character + "," + cave.getData() + "," + creationDate + "," + id + '\n';
+    public String[] getData() {
+        System.out.println(toString());
+        return null;
     }
 
     @Override
@@ -137,5 +156,15 @@ public class Dragon implements Comparable<Dragon> {
         this.character = ch;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
 }

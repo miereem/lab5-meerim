@@ -17,6 +17,9 @@ public class FileManager {
             return;
         }
     }
+    public String getFilename() {
+        return filename;
+    }
 
     public String read() throws IOException {
         StringBuilder strData = new StringBuilder();
