@@ -50,7 +50,6 @@ public class Dragon implements Comparable<Dragon> {
         this.character = character;
         this.cave = cave;
         this.creationDate = LocalDate.now();
-        this.id = collectionManager.getNextId();
     }
 
     public Dragon() {
@@ -118,11 +117,7 @@ public class Dragon implements Comparable<Dragon> {
     public int compareTo(Dragon o) {
         Integer oValue = o.getAge();
         Integer thisValue = this.getAge();
-        if (oValue - thisValue != 0) {
-            return thisValue - oValue;
-        } else {
-            return this.getId() - o.getId();
-        }
+        return oValue.compareTo(thisValue);
     }
 
     public void setId(int id) {

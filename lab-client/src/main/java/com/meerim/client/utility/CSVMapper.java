@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-public class CSVMapper {
+public class CSVMapper<T> {
     public List<Dragon> deserialize(String filename) {
         List<Dragon> dragons = null;
         try {
@@ -33,8 +33,8 @@ public class CSVMapper {
     public void serialize(String filename, List<Dragon> beans) {
         try {
             Writer writer = new FileWriter(filename);
-            HeaderColumnNameMappingStrategy<Dragon> strategy = new HeaderColumnNameMappingStrategyBuilder<Dragon>().build();
-            strategy.setType(Dragon.class);
+            HeaderColumnNameMappingStrategy<T> strategy = new HeaderColumnNameMappingStrategyBuilder<T>().build();
+            strategy.setType((Class<? extends T>) Dragon.class);
             StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy).build();
             beanToCsv.write(beans);
             writer.close();

@@ -30,6 +30,8 @@ public class UpdateCommand extends Command {
 
         if (collectionManager.removeById(intArg)) {
             Dragon dragon = new DragonMaker(userInputManager, outputManager, collectionManager).makeDragon();
+            collectionManager.removeId(dragon.getId());
+            dragon.setId(intArg);
             collectionManager.add(dragon);
             return new CommandResult(false, "The element was updated successfully");
         } else {
