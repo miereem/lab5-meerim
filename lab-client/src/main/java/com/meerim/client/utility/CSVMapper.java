@@ -16,11 +16,11 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-public class CSVMapper<T> {
+public class CSVMapper {
     public List<Dragon> deserialize(String filename) {
         List<Dragon> dragons = null;
         try {
-            dragons = new CsvToBeanBuilder(new FileReader(filename))
+            dragons = new CsvToBeanBuilder<Dragon>(new FileReader(filename))
                     .withType(Dragon.class)
                     .build()
                     .parse();
@@ -33,9 +33,9 @@ public class CSVMapper<T> {
     public void serialize(String filename, List<Dragon> beans) {
         try {
             Writer writer = new FileWriter(filename);
-            HeaderColumnNameMappingStrategy<T> strategy = new HeaderColumnNameMappingStrategyBuilder<T>().build();
-            strategy.setType((Class<? extends T>) Dragon.class);
-            StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy).build();
+            HeaderColumnNameMappingStrategy<Dragon> strategy = new HeaderColumnNameMappingStrategyBuilder<Dragon>().build();
+            strategy.setType(Dragon.class);
+            StatefulBeanToCsv<Dragon> beanToCsv = new StatefulBeanToCsvBuilder<Dragon> (writer).withMappingStrategy(strategy).build();
             beanToCsv.write(beans);
             writer.close();
         } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
