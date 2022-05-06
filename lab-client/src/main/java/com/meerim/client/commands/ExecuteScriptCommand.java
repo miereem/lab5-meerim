@@ -1,12 +1,9 @@
 package com.meerim.client.commands;
 
 import com.meerim.client.utility.UserInputManager;
-
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Scanner;
+
 
 public class ExecuteScriptCommand extends Command {
 
