@@ -7,7 +7,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
-   public FileManager(String var) throws NullPointerException {
+public class FileManager {
+    private final String filename;
+
+    public FileManager(String var) {
         this.filename = System.getenv(var);
         try {
             if (!filename.endsWith(".csv")) {
@@ -15,8 +18,13 @@ import java.util.Scanner;
                 return;
             }
         } catch (NullPointerException e) {
-            System.out.println("The environment variable is invalid");
+            System.out.println("The environment variable is invalid. Set it to PROG_PATH.");
+            return;
         }
+    }
+
+    public String getFilename() {
+        return filename;
     }
 
     public String read() throws IOException {

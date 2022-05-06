@@ -22,7 +22,7 @@ public class RemoveGreaterCommand extends Command {
     @Override
     public CommandResult execute(String arg) {
         Dragon dragon = new DragonMaker(userInputManager, outputManager, collectionManager).makeDragon();
-        collectionManager.getMainData().removeIf(x -> x.compareTo(dragon) > 0);
+        collectionManager.removeGreater(dragon);
         return new CommandResult(false, "Greater elements were removed successfully");
     }
 }

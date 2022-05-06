@@ -3,8 +3,7 @@ package com.meerim.client.data;
 public enum DragonType {
     WATER,
     AIR,
-    FIRE,
-    NULL;
+    FIRE;
     /**
      * Returns comma separated list with the forms.
      * @return WATER, AIR, FIRE

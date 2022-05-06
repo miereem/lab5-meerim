@@ -5,8 +5,7 @@ public enum Color {
     BLUE,
     YELLOW,
     WHITE,
-    BROWN,
-    NULL;
+    BROWN;
     /**
      * Returns comma separated list with the forms.
      * @return BLACK, BLUE, YELLOW, WHITE, BROWN

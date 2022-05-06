@@ -23,7 +23,7 @@ public class AddCommand extends Command {
     @Override
     public CommandResult execute(String arg) {
         Dragon dragon = new DragonMaker(userInputManager, outputManager, collectionManager).makeDragon();
-        collectionManager.getMainData().add(dragon);
+        collectionManager.add(dragon);
         return new CommandResult(false, "The element was added successfully");
     }
 }

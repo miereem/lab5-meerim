@@ -4,6 +4,7 @@ import com.meerim.client.data.Dragon;
 import com.meerim.client.utility.CollectionManager;
 
 import java.util.StringJoiner;
+import java.util.TreeSet;
 
 
 public class PrintAscendingCommand extends Command {
@@ -18,8 +19,9 @@ public class PrintAscendingCommand extends Command {
     @Override
     public CommandResult execute(String arg) {
         StringJoiner output = new StringJoiner("\n\n");
+        TreeSet<Dragon> ascending = new TreeSet<>(collectionManager.getMainData());
 
-        for (Dragon dragon : collectionManager.getMainData()) {
+        for (Dragon dragon : ascending) {
             output.add(dragon.toString());
         }
 

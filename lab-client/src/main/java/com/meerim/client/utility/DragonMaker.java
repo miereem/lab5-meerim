@@ -49,17 +49,16 @@ public class DragonMaker {
 
         Coordinates coordinates = askForCoordinates(); //not null
         DragonCave cave = askForDragonCave(); //not null
-
         return new Dragon(name, coordinates, age, color, type, character, cave, collectionManager);
     }
 
     private Coordinates askForCoordinates() {
         outputManager.println("Enter coordinates data");
-        final long xLimitation = -896;
-        final double yLimitation = 135;
+        final long xLimitation = -454;
+        final long yLimitation = -511;
         Integer x = asker.ask(arg -> (arg) > xLimitation, "Enter x (Integer)",
                 ERROR_MESSAGE, "The Integer must be >-454. Try again", Integer::parseInt, false); //
-        long y = asker.ask(arg -> (arg) <= yLimitation, "Enter y (Double)",
+        long y = asker.ask(arg -> (arg) > yLimitation, "Enter y (Double)",
                 ERROR_MESSAGE, "The double must be > -511. Try again", Long::parseLong, false); // not null
         return new Coordinates(x, y);
     }

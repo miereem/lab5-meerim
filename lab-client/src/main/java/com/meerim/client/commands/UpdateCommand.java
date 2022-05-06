@@ -28,10 +28,11 @@ public class UpdateCommand extends Command {
             return new CommandResult(false, "Your argument was incorrect. The command was not executed.");
         }
 
-        if (collectionManager.getMainData().removeIf(x -> x.getId() == intArg)) {
+        if (collectionManager.removeById(intArg)) {
             Dragon dragon = new DragonMaker(userInputManager, outputManager, collectionManager).makeDragon();
+            collectionManager.removeId(dragon.getId());
             dragon.setId(intArg);
-            collectionManager.getMainData().add(dragon);
+            collectionManager.add(dragon);
             return new CommandResult(false, "The element was updated successfully");
         } else {
             return new CommandResult(false, "Written id was not found. The command was not executed");

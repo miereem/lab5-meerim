@@ -1,15 +1,22 @@
 package com.meerim.client.data;
 
+import com.opencsv.bean.CsvBindByName;
+
+
 import java.util.Objects;
 
 public class Coordinates {
+    @CsvBindByName
+    private Integer x; //> -896
+    @CsvBindByName
+    private Long y; //<=135, not null
 
-    private final Integer x; //> -896
-    private final long y; //<=135, not null
-
-    public Coordinates(Integer x, long y) {
+    public Coordinates(Integer x, Long y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Coordinates() {
     }
 
     @Override

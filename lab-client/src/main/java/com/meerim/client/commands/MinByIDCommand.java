@@ -16,17 +16,12 @@ public class MinByIDCommand extends Command {
 
     @Override
     public CommandResult execute(String arg) {
-        int minID = Integer.MAX_VALUE;
-        Dragon minIdDragon = null;
 
-        for (Dragon dragon : collectionManager.getMainData()) {
-            if (minID > dragon.getId()) {
-                minID = dragon.getId();
-                minIdDragon = dragon;
-            }
+        if (collectionManager.getMainData().isEmpty()) {
+            return new CommandResult(false, "The method wasn't executed due to empty collection.");
         }
 
-        assert minIdDragon != null;
+        Dragon minIdDragon = collectionManager.getMinId();
         return new CommandResult(false, minIdDragon.toString());
     }
 }

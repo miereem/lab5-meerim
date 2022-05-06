@@ -7,8 +7,10 @@ import com.meerim.client.utility.CommandRunManager;
 import com.meerim.client.utility.Console;
 import com.meerim.client.utility.FileManager;
 import com.meerim.client.utility.UserInputManager;
+import com.meerim.client.utility.CollectionInfo;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public final class Client {
     static final String ENVIRONMENT_VARIABLE = "PROG_PATH";
@@ -28,8 +30,9 @@ public final class Client {
         }
         final CollectionManager collectionManager = new CollectionManager();
         final FileManager fileManager = new FileManager(ENVIRONMENT_VARIABLE);
-        final UserInputManager userInputManager = new UserInputManager();
-        final CommandManager commandManager = new CommandManager(fileManager, userInputManager, collectionManager, outputManager);
+        final UserInputManager userInputManager = new UserInputManager(new Scanner(System.in));
+        final CollectionInfo collectionInfo = new CollectionInfo(collectionManager);
+        final CommandManager commandManager = new CommandManager(fileManager, userInputManager, collectionManager, outputManager, collectionInfo);
         final CommandRunManager commandRunManager = new CommandRunManager(commandManager);
         final Console console = new Console(fileManager,
                 userInputManager, collectionManager, outputManager,
