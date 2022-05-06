@@ -1,6 +1,4 @@
 package com.meerim.client.utility;
-import com.meerim.client.commands.CommandResult;
-import com.meerim.client.utility.CollectionManager;
 
 import java.util.Collections;
 
