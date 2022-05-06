@@ -17,15 +17,14 @@ public class UserInputManager {
     }
 
     public String nextLine() {
-        if (currentFilesReaders.isEmpty()){
+        if (currentFilesReaders.isEmpty()) {
             return scanner.nextLine();
         }
 
         String input = null;
         try {
             input = currentFilesReaders.peek().readLine();
-        }
-        catch (IOException exc) {
+        } catch (IOException exc) {
             exc.printStackTrace();
         }
 
@@ -36,8 +35,7 @@ public class UserInputManager {
         currentFiles.pop();
         try {
             currentFilesReaders.pop().close();
-        }
-        catch (IOException exc) {
+        } catch (IOException exc) {
             exc.printStackTrace();
         }
         return nextLine();
