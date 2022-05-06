@@ -1,4 +1,6 @@
 package com.meerim.client.utility;
+import com.meerim.client.commands.CommandResult;
+import com.meerim.client.utility.CollectionManager;
 
 import java.util.Collections;
 
@@ -8,7 +10,7 @@ public class CollectionInfo {
     public CollectionInfo(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
-    public String info() {
+    public String info(){
         if (!collectionManager.isEmpty()) {
             return  "Collection type: " + collectionManager.getMainData().getClass().toString() + "\n"
                     + "Number of elements: " + collectionManager.getMainData().size() + "\n"
@@ -20,4 +22,5 @@ public class CollectionInfo {
                     + "Creation date: " + collectionManager.getCreationDate();
         }
     }
+
 }
