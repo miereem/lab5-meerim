@@ -39,7 +39,7 @@ public class CSVMapper {
             beanToCsv.write(beans);
             writer.close();
         } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
-            e.printStackTrace();
+            System.out.println("Couldn't save the data. Check if the file is available.");
         }
     }
 }
