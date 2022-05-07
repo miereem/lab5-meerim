@@ -13,7 +13,7 @@ public class CollectionInfo {
             return  "Collection type: " + collectionManager.getMainData().getClass().toString() + "\n"
                     + "Number of elements: " + collectionManager.getMainData().size() + "\n"
                     + "Creation date: " + collectionManager.getCreationDate() + "\n"
-                    + "The oldest dragon in collection is " + Collections.max(collectionManager.getMainData()).getAge();
+                    + "The youngest dragon in collection is " + collectionManager.getMinAge().getAge();
         } else {
             return "Collection type: " + collectionManager.getMainData().getClass().toString() + "\n"
                     + "Number of elements: " + collectionManager.getMainData().size() + "\n"

@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+import static java.lang.Integer.MAX_VALUE;
+
 public class CollectionManager {
     private LinkedHashSet<Dragon> mainData = new LinkedHashSet<>();
     private final LocalDate creationDate = LocalDate.now();
@@ -45,7 +47,7 @@ public class CollectionManager {
     }
     public Dragon getMinId() {
         Dragon minIdDragon = null;
-        int minId = Integer.MAX_VALUE;
+        int minId = MAX_VALUE;
         for (Dragon dragon : mainData) {
             if (dragon.getId() < minId) {
                 minId = dragon.getId();
@@ -60,13 +62,23 @@ public class CollectionManager {
         idSet.clear();
     }
     public void add(Dragon dragon) {
-            dragon.setId(getNextId());
-            mainData.add(dragon);
-            idSet.add(dragon.getId());
+        dragon.setId(getNextId());
+        mainData.add(dragon);
+        idSet.add(dragon.getId());
     }
+    public Dragon getMinAge() {
+            int minAge = MAX_VALUE;
+            Dragon minAgeDragon = null;
+        for(Dragon dragon: mainData) {
+            if (dragon.getAge() < minAge) {
+                minAge = dragon.getAge();
+                minAgeDragon = dragon;
+            }
+        }
+        return minAgeDragon;
+        }
     public boolean addIfMin(Dragon dragon) {
-        if (mainData.isEmpty() || dragon.compareTo(Collections.min(mainData)) > 0) {
-            System.out.println(dragon.compareTo(Collections.min(mainData)));
+        if (mainData.isEmpty() || dragon.compareTo(getMinAge()) > 0) {
             mainData.add(dragon);
             idSet.add(dragon.getId());
             return true;
@@ -82,7 +94,7 @@ public class CollectionManager {
         return avAge;
     }
     public Dragon getMinCave() {
-        DragonCave minCave = new DragonCave(Integer.MAX_VALUE);
+        DragonCave minCave = new DragonCave(MAX_VALUE);
         Dragon minCaveDragon = null;
         for (Dragon dragon : mainData) {
             if (minCave.compareTo(dragon.getCave()) > 0) {
