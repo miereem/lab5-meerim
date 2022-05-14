@@ -6,7 +6,6 @@ import com.meerim.client.data.DragonCave;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -69,7 +68,7 @@ public class CollectionManager {
     public Dragon getMinAge() {
             int minAge = MAX_VALUE;
             Dragon minAgeDragon = null;
-        for(Dragon dragon: mainData) {
+        for (Dragon dragon: mainData) {
             if (dragon.getAge() < minAge) {
                 minAge = dragon.getAge();
                 minAgeDragon = dragon;

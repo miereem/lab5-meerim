@@ -26,9 +26,9 @@ public class CSVMapper {
                     .parse();
             return dragons;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Couldn't read the data. Check if the file is available.");
         }
-        return dragons;
+        return null;
     }
     public void serialize(String filename, List<Dragon> beans) {
         try {

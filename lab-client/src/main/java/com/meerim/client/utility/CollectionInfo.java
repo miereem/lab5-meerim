@@ -1,7 +1,5 @@
 package com.meerim.client.utility;
 
-import java.util.Collections;
-
 public class CollectionInfo {
     private final CollectionManager collectionManager;
 

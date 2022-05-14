@@ -21,9 +21,9 @@ public class HelpCommand extends Command {
                         + "add_if_min {element} : adds new element to the collection if it's value less than min element's value\n"
                         + "remove_greater {element} : deletes every element in the collection with value more than entered element's value\n"
                         + "min_by_id : gives information about a random element from collection with minimum value\n"
-                        + "print_ascending : prints every element in ascending order"
-                        + "average_by_age : prints the average of elements' age"
-                        + "min_by_cave : prints any element from the collection with the lowest number of treasures");
+                        + "print_ascending : prints every element in ascending order\n"
+                        + "average_by_age : prints the average of elements' age\n"
+                        + "min_by_cave : prints any element from the collection with the lowest number of treasures\n");
 
     }
 }
